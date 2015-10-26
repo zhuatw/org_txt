@@ -1,0 +1,16 @@
+* States
+  Spacemacs has 10 states:
+| State        | Color       | Description                                                                                                |
+| ---------    |             |                                                                                                            |
+| normal       | orange      | like the normal mode of Vim, used to execute and combine commands                                          |
+| insert       | green       | like the insert mode of Vim, used to actually insert text                                                  |
+| visual       | gray        | like the visual mode of Vim, used to make text selection                                                   |
+| motion       | purple      | exclusive to Evil, used to navigate read only buffers                                                      |
+| emacs        | blue        | exclusive to Evil, using this state is like using a regular Emacs without Vim                              |
+| replace      | chocolate   | exclusive to Evil, overwrites the character under point instead of inserting a new one                     |
+| hybrid       | blue        | exclusive to Spacemacs, this is like the insert state except that all the emacs key bindings are available |
+| evilified    | light brown | exclusive to Spacemacs, this is an emacs state modified to bring Vim navigation, selection and search.     |
+| lisp         | pink        | exclusive to Spacemacs, used to navigate Lisp code and modify it (more info)                               |
+| iedit        | red         | exclusive to Spacemacs, used to navigate between multiple regions of text using iedit (more info)          |
+| iedit-insert | red         | exclusive to Spacemacs, used to replace multiple regions of text using iedit (more info)p                  |
+* windows

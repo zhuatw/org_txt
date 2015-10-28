@@ -1,0 +1,119 @@
+* colour 颜色
+** red 红色
+** orange 橙色
+** yellow 黄色
+** green 绿色 
+** syan 青色
+** blue 蓝色
+** purple 紫
+** black 黑色
+** gray 灰
+** white 白色
+** brown 棕色
+** tan 褐色 
+** pink 粉红色 
+** forest green 森林绿
+** magenta 紫红 洋红
+** Purple紫色 
+** Fuchsia紫红 
+Maroon茶色 
+Olive橄榄 
+Navy深蓝 
+Teal青色 
+Aqua浅绿 
+Lime亮绿 
+Silver银色 
+Green绿色 
+Red红色 
+Yellow黄色 
+Blue蓝色 
+blueviolet蓝紫色 
+Pink粉红 
+Brown褐色 
+Orange橙色 
+powderblue粉蓝色 
+Gray灰色 
+aquamarine海宝蓝色 
+coral珊瑚色 
+chartreuse黄绿色 
+cadetblue军官蓝 
+chocolate深褐色 
+cornflowerblue矢车菊色 
+crimson深红色 
+cyan青绿色 
+darkgoldenrod深菊黄 
+gold金色 
+khaki卡其色 
+forestgreen森林绿 
+goldenrod菊花黄 
+lightcoral浅橘红色 
+lightblue浅蓝色 
+lightslategray浅石板灰 
+lightskyblue浅天空蓝 
+lightseagreen浅海绿色 
+lightsalmon浅澄红色 
+lightpink浅粉红色 
+lightgrey浅灰色 
+lightgreen浅绿色 
+palegreen淡绿色 
+palegoldenrod淡菊黄色 
+orchid紫色 
+orangered橘红色 
+paleturquoise淡湖蓝色 
+palevioletred淡紫色 
+wheat小麦色 
+mistyrose朦胧玫瑰色 
+magenta洋红色 
+midnightblue深夜蓝 
+mediumseagreen中海绿色 
+mediumslateblue中石板蓝色 
+mediumspringgreen中亮绿色 
+mediumturquoise中海湖蓝 
+mediumvioletred中紫色 
+salmon澄红色 
+sandybrown黄棕色 
+seagreen海绿色 
+springgreen亮绿色 
+tan黄褐色 
+tomato蕃茄红色 
+turquoise湖蓝色 
+violet紫色 
+yellowgreen黄绿色 
+slateblue石板蓝 
+skyblue天空蓝 
+powderblue粉蓝色 
+lightskyblue浅天空蓝 
+plum深紫色 
+peachpuff桃红色 
+mediumpurple中紫红色 
+mediumorchid中紫色 
+mediumblue中蓝色 
+palegreen淡绿色 
+mediumaquamarine中海宝蓝色 
+limegreen石灰绿 
+lawngreen草绿色 
+deepskyblue深天空蓝 
+deeppink深粉红色 
+darkviolet深紫色 
+darkturquoise深湖蓝色 
+darkslategray深石板灰 
+darkslateblue深石板蓝 
+darkseagreen深海绿色 
+darksalmon深澄红色 
+darkred暗红色 
+darkorchid深紫色 
+darkorange深菊色 
+darkmagenta深紫红色 
+darkkhaki深卡其色 
+darkgreen墨绿色 
+darkgray深灰色 
+darkcyan深青绿 
+darkblue深蓝色 
+dimgray暗灰色 
+dodgerblue玉米蓝 
+loralwhite花白色 
+greenyellow黄绿色 
+hotpink亮粉红 
+indianred水蓝色 
+indigo靛蓝色 
+lavender淡紫色

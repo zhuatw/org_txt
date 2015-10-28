@@ -125,6 +125,7 @@ tx 表示向右寻找第一个 x 所在的位置，但是它不是把光标停�
 ** table
 s-tab 对齐和向上个单元格
 ** undo and redo
+   c-x u
 | 1 | u   | undo-tree-undo | normal| vim   |
 | 2 | c-r | undo-tree-redo | normal| vim   |
 | 3 | c-_ | undo-tree-undo | normal| emacs |
@@ -250,7 +251,7 @@ the 打成了 teh，那么我们可以在命令模式下用 dlp 或者 xp 来
    + :close
    + :wqa
    + :set filetype=php
-- :set  background=dark (注：默认的情况下使用的 background 是 light) 
+- :set  background=dark (注：默认的情况下使用的 background 是 light)  
 ** window
 ## :split
 ## :close

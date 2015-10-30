@@ -1,8 +1,15 @@
 * text glossary
-  hybrid
-  glossaries, follow me
-  font 到选项里设置雅黑小四
-  text object
+ hybrid enabled disabled 
+ glossaries, follow me
+ font 选项
+ text object
+** .spacemacs
+(defun dotspacemacs/user-config ()
+  "Configuration function for user code.
+ This function is called at the very end of Spacemacs initialization after
+layers configuration. You are free to put any user code."
+  (server-start);;自已的配置放到这里 bb
+)
 ** vim mode
 + Normal
 + Insert
@@ -22,8 +29,8 @@ r 是一次性的替换当前字符，R 是从当前光标进入替换模式向�
    I 在当前行非空字符的行首输入
    a 在当前光标后进入插入模式即输入状态
    A 在当前行行尾输入
-   x 删除当前光标字符
    s 删除当前光标字符，进入插入模式
+   x 删除当前光标字符
    X 删除当前光标左边字符
    c-q 在当前光标左侧一次性的输入一个字符
    xp 交换前后两个字符的位置
@@ -52,11 +59,25 @@ r 是一次性的替换当前字符，R 是从当前光标进入替换模式向�
    d4e 都是可以删除从该光标处向后的四个单词。
    dG 表示删除当前行至行尾的内容
    dgg 表示删除当前行至 文 件头的内容。
-   
+   s-* 选择当前光标的单词，不论当前光标在此单词的位置
+** org
+c-c c-d 输入日期
+*** Symbols
+spc s l
+出现一个列表缓冲区，是以有 * 来提取的，可输入关键字来搜索 ret 后光标就到此处
+
 ** line
    注意有逻辑行的区别，都可加数字前缀
    2$则会移动到下一行的行尾, 0 命令和^命令的
    ----------------------------------------
+   | one key | group | insert | description |
+   |       0 |       | no     |             |
+   |         |       |        |             |
+   |         |       |        |             |
+   |         |       |        |             |
+   |         |       |        |             |
+   |         |       |        |             |
+   
  - J 把下行并到当前行，不论光标在此行的位置
         "J"命令可以是你选择的行全部连接成一行，行与行之间以一个空格代替所有的换行符
         和空白，在连接行的最后放置两个空格。如果想保留行的前导空白和后缀空白，使用
@@ -71,12 +92,33 @@ r 是一次性的替换当前字符，R 是从当前光标进入替换模式向�
  - C 删除当前光标到行尾，并进入插入模式
  - dd 删除整行
  - S 删除本行，且光标到行首进入插入模式
+   yy 复制当前行
    ---------------------------------------- line config
    linum-mode
 :set number 来显示行号，:set nonumber 来取消显示行号。
  ** buffer
 spc-tab 与最后一个缓冲区来回切换
-** Scroll window
+
+** window
+<SPC> w b	split a window horizontally
+<SPC> w c	close a window
+<SPC> w d	toggle window dedication (dedicated window cannot be used by a mode)
+<SPC> w H	move window to the left
+<SPC> w J	move window to the bottom
+<SPC> w K	move window to the top
+<SPC> w L	move window to the right
+<SPC> w m	maximize/minimize a window
+<SPC> w M	maximize/minimize a window, when maximized the buffer is centered
+关闭其它窗口且最大化当前窗口
+<SPC> w p m	open messages buffer in a popup window
+<SPC> w p p	close the current sticky popup window
+<SPC> w r	rotate windows clockwise
+<SPC> w R	rotate windows counter-clockwise
+<SPC> w u	undo window layout (used to effectively undo a close window)
+<SPC> w U	redo window layout
+<SPC> w v	split a window vertically
+<SPC> w w	cycle and focus between windows
+** Scroll
 M 当前行到前屏幕的中间
 H 参数默认为 6，距离屏幕顶的行数，小于 6 不行，要大于 6 才行
 L 参数默认为 6，距离屏幕底的行数，小于 6 不行，要大于 6 才行枯
@@ -93,8 +135,42 @@ c-f 向下翻一页，光标不动
 c-b 向上翻一页，光标不动
 c-d 向下翻半页，光标不动
 c-u 向上翻半页，光标不动
+** Buffer manipulation commands (start with b):
+Key Binding	Description
+*** <SPC> b d	delete the current buffer
+(beware the associated file is also deleted)
+删除当前缓冲区，注意相关的文件也删除，好像不灵，暂不用
+*** <SPC> b k kill the current buffer
+删除当前缓冲区，如果缓冲区没有修改过，不会提示，当前窗口也会自己关掉
+*** <SPC> b K	kill all buffers except the current one
+删除所有缓冲区，除了当前缓冲区
+*** <SPC> b m h	move a buffer to the left
+当前缓冲区窗口移动到左边
+*** <SPC> b m j	move a buffer to the bottom
+当前缓冲区窗口移动到下边
+*** <SPC> b m k	move a buffer to the top
+当前缓冲区窗口移动到上边
+*** <SPC> b m l	move a buffer to the right
+当前缓冲区窗口移动到右边
+*** <SPC> b n	switch to next buffer
+切换当前缓冲区窗口为下一个缓冲区
+*** <SPC> b p	switch to previous buffer
+切换当前缓冲区窗口为上一个缓冲区
+*** <SPC> b r	rename the current buffer
+暂不对
+*** <SPC> b s	switch to a buffer using helm
+暂不对
+*** <SPC> b w	toggle read-only
+** Files manipulation commands (start with f):
+<SPC> f f	open a file using ido
+<SPC> f e d	open your .spasemacs file
+<SPC> f s	save a file
+<SPC> f S	save all files
+<SPC> f t	toggle file tree side bar using neotree
+<SPC> f y	show current file absolute path in the minibuffer
+显示当前文件的绝对路径
 ** visual
-    平常是以当前光标为参照点用命令操纵
+    平常是以当前光标为参照点用命令操
     对选中的区域可用字符移动来高亮选中
     + v Characterwise visual mode
 
@@ -140,7 +216,8 @@ s-tab 对齐和向上个单元格
 | <SPC> h d k | describe-key      |
 | <SPC> h d m | describe-mode     |
 | <SPC> h d v | describe-variable |
-** 加一个单词然后在整个文档中搜索这个单词，然后用数字加 n 的组合来定位第几个单词。 
+** /
+加一个单词然后在整个文档中搜索这个单词，然后用数字加 n 的组合来定位第几个单词。 
    如果我们想要单纯的只使用该单词比如 xin，那么我们可以用
    命令/\<xin\>来做到，其中\<表示匹配一个单词的开头，而\>
    则表示匹配一个单词的结束。 
@@ -309,15 +386,20 @@ vim 还强大的，倒是没几个。
       我想此时各自有各自的字符集，相应的编码也是有自己的编法，此时代码页也就别称为字符
       编码了，代码页就为曾用名了，但微软或老的程序员还是用代码页来称呼。
       许多字对应的编码是不同的，字符集（charset）和字符编码（encoding）就不是一个概念。
-    - 字符集是一个 ISO 类型标准方案
-        字符编码是实现（显示与输入 IO），这是系统来控制的，它来转换各种存储和编码
-        utf-8 是存储与传输
-        ANSII 储存显示基本只能是拉丁文
+    - 字符集 Unicode 是一个 ISO 类型标准方案，不管实现，以前各自为政有多个字符集，字符集
+      里的字符集合也可称为字符集，它和字符的二进制编码的一一对应。
+      字符编码是实现（显示与输入 IO），这是操作系统来控制的，它来转换各种存储和编码
+    - utf-8 是存储与传输的格式，是以 Unicode 的标准来编码实现的
+    - ANSII 储存显示基本只能是拉丁文
         Unicode/UCS2 字符集可储存显示全世界的，浪费存储空间也网络传输也浪费
         UCS4 当然更加浪费了。因此 Unicode/UCS 的压缩形式－－UTF8 就出现了。
     - 操作系统只能有一种自己内含的字符编码，当它打开文件时它有函数来判断此文件是以那种字符
         编码来打开的，如果与自己内含的相同就直接打开，如果不同还需转码成自己内含的才能打开的。 
         操作系统之上的所有显示软件都是与自己内含的。
+        抄的编码其实有 2 个意思。
+        一个是把字符和数字对应起来（比如 unicode 和 GBXXXX 等）。
+        二是相应在数字在计算机中的表示，也就是和字节序列对应起来（比如 utf8，mbcs 等）
+    - 键盘也有编码，还有字体的体现，  
      1) code page
         中文名－代码页
         别称－内码表
@@ -335,6 +417,11 @@ vim 还强大的，倒是没几个。
         字符集这个概念，是为了大家统一重新建了一个上层抽像，不管实现。
 百科搜代码页，wiz 关于字符集和字符编码以及代码页的前前后后
 字体（库）是与字符集有关系的，而所谓的乱码，则是与字符编码有关系的
+链接：http://www.zhihu.com/question/20908598/answer/55785273
+完成字形设计后，需要软件开发人员使用 TrueType 语言编写每个字的指令序列，
+除了描述坐标及笔画走向之外，有些字还要编写显示控制指令，确保其显示结果不失真。TrueType
+是由 Apple 公司和 Microsoft 公司联合提出的一种字形描述语言，该技术提供了字形描述的方法
+和指令，用这些指令可以编写出各种各样的字库程序，产生 TrueType 字库
 *** emacs coding
   org 模式的头文件用这个格式-*- coding: gbk -*- (UTF-8 or GBK)
 1. describe-coding-system
@@ -364,9 +451,20 @@ vim 还强大的，倒是没几个。
 
 5. prefer-coding-system
    提升当前的代码顺序
-* 待整
+** plugs 
+*** neotree
+可用翻页命令 c-d and c-u
+*** bookmarks
+spc h b
+CTRL+d	delete the selected bookmark
+CTRL+e	edit the selected bookmark
+CTRL+f	toggle filename location
+CTRL+o	open the selected bookmark in another window
+To save a new bookmark, just type the name of the bookmark and press RET.
+在当前位置保存一个新的书签，要输入名字后 RET
+* 待整理好
 ：g 表示替换该
-行所有的符合的目标字符串，
+行所有的符瓦在 dffada 夺：夺合的目标字符串，
 ** p 表示列印
 ** c 表示每次执行替换
 的时候都需要请求确认，如果这个地方什么都不写，表示只是
@@ -530,4 +628,4 @@ session and viminfo
 多折行功能。 
 15.我的意思是，咱们先掌握一种最基本的折叠代码的方式，然
 后其他的慢慢研究，先学习主干知识。 
-** 
+ 

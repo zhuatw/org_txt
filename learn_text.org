@@ -3,7 +3,9 @@
  glossaries, follow me
  font 选项
  text object
-** .spacemacs
+ <SPC> : config-system/create-layer RET
+** .spacemacs.d/
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
@@ -60,12 +62,20 @@ r 是一次性的替换当前字符，R 是从当前光标进入替换模式向�
    dG 表示删除当前行至行尾的内容
    dgg 表示删除当前行至 文 件头的内容。
    s-* 选择当前光标的单词，不论当前光标在此单词的位置
-** org
-c-c c-d 输入日期
-*** Symbols
-spc s l
+** Symbols
+| <SPC> s l   | To list all the symbols of a buffer press:                    |
+| <SPC> s e   | edit all occurrences of the current symbol                    |
+| <SPC> t s   | toggle the auto highlighting                                  |
+| <SPC> s e   | edit all occurrences of the current symbol                    |
+| <SPC> t s   | toggle the auto highlighting                                  |
+| <SPC> s s   | initiate navigation micro-state                               |
+| <SPC> s n   | go to next occurrence and initiate navigation micro-state     |
+| <SPC> s N   | go to previous occurrence and initiate navigation micro-state |
+| <SPC> s c d | change range to display area                                  |
+| <SPC> s c f | hange range to function                                       |
+| <SPC> s C   | change range to default (whole buffer)                        |
+| <SPC> s c b | change range to whole buffer                                  |
 出现一个列表缓冲区，是以有 * 来提取的，可输入关键字来搜索 ret 后光标就到此处
-
 ** line
    注意有逻辑行的区别，都可加数字前缀
    2$则会移动到下一行的行尾, 0 命令和^命令的
@@ -97,27 +107,27 @@ spc s l
    linum-mode
 :set number 来显示行号，:set nonumber 来取消显示行号。
  ** buffer
-spc-tab 与最后一个缓冲区来回切换
 
 ** window
-<SPC> w b	split a window horizontally
-<SPC> w c	close a window
-<SPC> w d	toggle window dedication (dedicated window cannot be used by a mode)
-<SPC> w H	move window to the left
-<SPC> w J	move window to the bottom
-<SPC> w K	move window to the top
-<SPC> w L	move window to the right
-<SPC> w m	maximize/minimize a window
-<SPC> w M	maximize/minimize a window, when maximized the buffer is centered
-关闭其它窗口且最大化当前窗口
-<SPC> w p m	open messages buffer in a popup window
-<SPC> w p p	close the current sticky popup window
-<SPC> w r	rotate windows clockwise
-<SPC> w R	rotate windows counter-clockwise
-<SPC> w u	undo window layout (used to effectively undo a close window)
-<SPC> w U	redo window layout
-<SPC> w v	split a window vertically
-<SPC> w w	cycle and focus between windows
+spc-tab 与最近一个缓冲区来回切换
+| <SPC> w s   | 	split a window horizontally                                          |
+| <SPC> w v   | 	split a window vertically                                            |
+| <SPC> w c   | 	close a window                                                       |
+| <SPC> w d   | 	toggle window dedication (dedicated window cannot be used by a mode) |
+| <SPC> w H   | 	move window to the left                                              |
+| <SPC> w J   | 	move window to the bottom                                            |
+| <SPC> w K   | 	move window to the top                                               |
+| <SPC> w L   | 	move window to the right                                             |
+| <SPC> w m   | 	maximize/minimize a window                                           |
+| <SPC> w M   | 	maximize/minimize a window, when maximized the buffer is centered    |
+| <SPC> w p m | 	open messages buffer in a popup window                               |
+| <SPC> w p p | 	close the current sticky popup window                                |
+| <SPC> w r   | 	rotate windows clockwise                                             |
+| <SPC> w R   | 	rotate windows counter-clockwise                                     |
+| <SPC> w u   | 	undo window layout (used to effectively undo a close window)         |
+| <SPC> w U   | 	redo window layout                                                   |
+| <SPC> w w   | 	cycle and focus between windows                                      |
+
 ** Scroll
 M 当前行到前屏幕的中间
 H 参数默认为 6，距离屏幕顶的行数，小于 6 不行，要大于 6 才行
@@ -135,7 +145,23 @@ c-f 向下翻一页，光标不动
 c-b 向上翻一页，光标不动
 c-d 向下翻半页，光标不动
 c-u 向上翻半页，光标不动
-** Buffer manipulation commands (start with b):
+** Files
+manipulation commands (start with f):
+| <SPC> f f   | open a file using ido                             |
+| <SPC> f e d | open your .spasemacs file                         |
+| <SPC> f s   | save a file                                       |
+| <SPC> f S   | save all files                                    |
+| <SPC> f t   | toggle file tree side bar using neotree           |
+| <SPC> f y   | show current file absolute path in the minibuffer |
+*** Description 
+1. 显示当前文件的绝对路径
+2. 显示当前文件的绝对路径
+3. 显示当前文件的绝对路径
+4. 显示当前文件的绝对路径
+5. 显示当前文件的绝对路径
+6. 显示当前文件的绝对路径
+** Buffer
+manipulation commands (start with b):
 Key Binding	Description
 *** <SPC> b d	delete the current buffer
 (beware the associated file is also deleted)
@@ -161,62 +187,50 @@ Key Binding	Description
 *** <SPC> b s	switch to a buffer using helm
 暂不对
 *** <SPC> b w	toggle read-only
-** Files manipulation commands (start with f):
-<SPC> f f	open a file using ido
-<SPC> f e d	open your .spasemacs file
-<SPC> f s	save a file
-<SPC> f S	save all files
-<SPC> f t	toggle file tree side bar using neotree
-<SPC> f y	show current file absolute path in the minibuffer
-显示当前文件的绝对路径
 ** visual
-    平常是以当前光标为参照点用命令操
-    对选中的区域可用字符移动来高亮选中
-    + v Characterwise visual mode
-
-    + V Linewise visual mode
-        j  命令表示向下再选中一行
-        k 命令向上选中一行
-    + c-v
-        + gv 重新选中前一次可视化时选中的文本
-        + o and O 交换选中块当前光标的位置
-        + d 删除当前选中的字符，后面的前移到此位置
-        + c 删除当前选中的字符，后面不动
-        + r 选一个就替一个，选多个就用你输入的替换成多个
+- v Characterwise visual mode
+- V Linewise visual mode
+- c-v 矩形模式
+- 通用
+  d 删除选中的区域                                   
+  c 删除当前选中的字符，后面不动
+  o and O  在高亮块中交换光标位置 
+  gv 重新选中最近一次可视化时选过的文本                           
+  r 选一个就替一个，选多个就用你输入的替换成多个
  
-** find
+*** find
    f 加上一个字符的命令，这里的 f 表示“find”,比如 fx 表示在当
    前位置向下定位到第一个 x 所在的位置。 
   F 加一个字符表示向左搜索。
   n evil-search-next
-** magit git-bash
+*** magit git-bash
 test and text 
-** t be to
+*** t be to
 是“to”的简写，比如
 tx 表示向右寻找第一个 x 所在的位置，但是它不是把光标停留
 在被搜索的字符上，而是在它之前的前一个字符上。小写的 t
 表示向右搜索，大写的 T 表示向左搜索。 
 据了两行的空间，但是在逻辑上它们是一行，因为它们之间不
 包括任何的换行符。 
-** %
+*** %
 它会自动把光标定位到与之对应的括号的
-** 50%
+*** 50%
    命令来跳转到文件的中间位置，用 80%命令跳转到文件的百分之八十的位置
-** table
+*** table
 s-tab 对齐和向上个单元格
-** undo and redo
+*** undo and redo
    c-x u
 | 1 | u   | undo-tree-undo | normal| vim   |
 | 2 | c-r | undo-tree-redo | normal| vim   |
 | 3 | c-_ | undo-tree-undo | normal| emacs |
 | 4 | a-_ | undo-tree-redo | normal| emacs |
-** help
+*** help
 | Key Binding | 	Description     |
 | <SPC> h d f | describe-function |
 | <SPC> h d k | describe-key      |
 | <SPC> h d m | describe-mode     |
 | <SPC> h d v | describe-variable |
-** /
+*** /
 加一个单词然后在整个文档中搜索这个单词，然后用数字加 n 的组合来定位第几个单词。 
    如果我们想要单纯的只使用该单词比如 xin，那么我们可以用
    命令/\<xin\>来做到，其中\<表示匹配一个单词的开头，而\>
@@ -311,7 +325,7 @@ the 打成了 teh，那么我们可以在命令模式下用 dlp 或者 xp 来
 行，Y 命令也是复制整行的内容，
 ## y$命令则是复制当前光标
 所在位置至行尾的命令。 
-** sentence
+*** sentence
    das 如果我们想删除一个句子，我们也希望删除它后面的空白， 就用 das，
    cis 如果我们用新的文本替换它，空白是保留下来的
 2er 时候我们希望用新输入的文本来代替那些已经存在的文本，
@@ -324,7 +338,7 @@ the 打成了 teh，那么我们可以在命令模式下用 dlp 或者 xp 来
 粘贴、搜索、替换、重复执行命令等一系列操作。 
 4.vim 的操作无难度，它是一学就会的，但是想要用起来得心
 应手，还是需要大量的练习的，还有就是对各种命令的记忆。 
-** file
+*** file
    + :e
    + spc-f-s  <->  :w
    + :sav
@@ -333,16 +347,16 @@ the 打成了 teh，那么我们可以在命令模式下用 dlp 或者 xp 来
    + :wqa
    + :set filetype=php
 - :set  background=dark (注：默认的情况下使用的 background 是 light)  
-** window
+*** window
 ## :split
 ## :close
 ## :only
 来关闭其他窗口。 
 ## :split  qian.php
 ## :vsplit
-** tabedit  xin
+*** tabedit  xin
 tabedit 是 tab (标签页)和 edit(编辑)的合写，
-** _vimrc
+*** _vimrc
 #宏命令_记录与回放
 .命令可以重复最近一次的编辑操作，但是，当我们操作很复杂的时候，或
 者我们需要重复的操作变多的时候，又该怎么办呢? 
@@ -367,8 +381,8 @@ vim 还强大的，倒是没几个。
 ：s/查找字符/替换字符/[可选的修饰符] 
 ##可选的修饰符
 
-** code utf-8 font IM
-*** code know
+*** code utf-8 font IM
+**** code know
     个人觉得按时间线的脉络来说比较直观，具体细节不阐明，因为我也不懂，时间线的前
     后有出入我也不管，我认为理解了概念后能用就行，其它的都是专业人员的事情喽！
     - 语言与文字，笔与纸，这里不是同一个范畴，不说。
@@ -422,7 +436,7 @@ vim 还强大的，倒是没几个。
 除了描述坐标及笔画走向之外，有些字还要编写显示控制指令，确保其显示结果不失真。TrueType
 是由 Apple 公司和 Microsoft 公司联合提出的一种字形描述语言，该技术提供了字形描述的方法
 和指令，用这些指令可以编写出各种各样的字库程序，产生 TrueType 字库
-*** emacs coding
+**** emacs coding
   org 模式的头文件用这个格式-*- coding: gbk -*- (UTF-8 or GBK)
 1. describe-coding-system
    c-h C
@@ -452,16 +466,135 @@ vim 还强大的，倒是没几个。
 5. prefer-coding-system
    提升当前的代码顺序
 ** plugs 
-*** neotree
-可用翻页命令 c-d and c-u
 *** bookmarks
 spc h b
-CTRL+d	delete the selected bookmark
-CTRL+e	edit the selected bookmark
-CTRL+f	toggle filename location
-CTRL+o	open the selected bookmark in another window
+| CTRL+d | delete the selected bookmark                 |
+| CTRL+e | edit the selected bookmark                   |
+| CTRL+f | toggle filename location                     |
+| CTRL+o | open the selected bookmark in another window |
 To save a new bookmark, just type the name of the bookmark and press RET.
 在当前位置保存一个新的书签，要输入名字后 RET
+*** neotree
+可用翻页命令 c-d and c-u
+* org
+spc m org-edit-special
+c-c c-d 输入日期
+a-ret 下行出行同级列表或大纲
+s-右箭头会切换列表显示的不同列表号
+** Table-related shortcuts:
+| SPC m t a   | Align the table at point by aligning all vertical bars                     |
+| SPC m t b   | Blank the current table field or active region                             |
+| SPC m t c   | Convert from 'org-mode' table to table.el and back                         |
+| SPC m t d c | Delete a column from the table                                             |
+| SPC m t d r | Delete the current row or horizontal line from the table                   |
+| SPC m t e   | Replace the table field value at the cursor by the result of a calculation |
+| SPC m t E   | Export table to a file, with configurable format                           |
+| SPC m t h   | Go to the previous field in the table                                      |
+| SPC m t H   | Move column to the left                                                    |
+| SPC m t i c | Insert a new column into the table                                         |
+| SPC m t i h | Insert a horizontal-line below the current line into the table             |
+| SPC m t i H | Insert a hline and move to the row below that line                         |
+| SPC m t i r | Insert a new row above the current line into the table                     |
+| SPC m t I   | Import a file as a table                                                   |
+| SPC m t j   | Go to the next row (same column) in the current table                      |
+| SPC m t J   | Move table row down                                                        |
+| SPC m t K   | Move table row up                                                          |
+| SPC m t l   | Go to the next field in the current table, creating new lines as needed    |
+| SPC m t L   | Move column to the right                                                   |
+| SPC m t n   | Query for a size and insert a table skeleton                               |
+| SPC m t N   | Use the table.el package to insert a new table                             |
+| SPC m t p   | Plot the table using org-plot/gnuplot                                      |
+| SPC m t r   | Recalculate the current table line by applying all stored formulas         |
+| SPC m t s   | Sort table lines according to the column at point                          |
+| SPC m t t f | Toggle the formula debugger in tables                                      |
+| SPC m t t o | Toggle the display of Row/Column numbers in tables                         |
+| SPC m t w   | Wrap several fields in a column like a paragraph                           |
+1. 
+2.
+3.
+4. 删除当前列
+5. 删除当前行
+6. 
+7.
+8. 
+9. 当前与左边交换
+10. 
+11. 
+12. 
+13. 
+14. 
+15. 
+16. 
+17. 
+18. 
+19. 
+20. 
+21. 
+22. 
+23. 
+24. 
+25. 
+26. 表格左边显示行号，如有列字段可能也会显示列号
+27.
+** org with evil-org-mode 
+leader key ","  <dotspacemacs-major-mode-leader-key>
+SPC m  org-edit-special                               
+| SPC m .      | 	org-time-stamp                               |
+| SPC m a      | 	org-agenda                                   |
+| SPC m b      | 	org-tree-to-indirect-buffer                  |
+| SPC m A      | 	org-archive-subtree                          |
+| SPC m c      | 	org-capture                                  |
+| SPC m C      | 	evil-org-recompute-clocks                    |
+| SPC m d      | 	org-deadline                                 |
+| SPC m e      | 	org-export-dispatch                          |
+| SPC m f      | 	org-set-effort                               |
+| SPC m I      | 	org-clock-in                                 |
+| SPC m l      | 	org-open-at-point                            |
+| SPC m n      | 	org-narrow-to-subtree                        |
+| SPC m N      | 	widen                                        |
+| SPC m leader | 	org-ctrl-c-ctrl-c                            |
+| SPC m O      | 	org-clock-out                                |
+| SPC m q      | 	org-clock-cancel                             |
+| SPC m R      | 	org-refile                                   |
+| SPC m s      | 	org-schedule                                 |
+| SPC m T      | 	org-show-todo-tree                           |
+| SPC m L      | 	org-shiftright                               |
+| SPC m H      | 	org-shiftleft                                |
+| SPC m K      | 	org-shiftup                                  |
+| SPC m J      | 	org-shiftdown                                |
+| SPC m C-S-l  | 	org-shiftcontrolright                        |
+| SPC m C-S-h  | 	org-shiftcontrolleft                         |
+| SPC m C-S-j  | 	org-shiftcontroldown                         |
+| SPC m C-S-k  | 	org-shiftcontrolup                           |
+| SPC s l      | 	spacemacs/jump-in-buffer (jump to a heading) |
+1.  
+2.
+3. 当前大纲显示在另一窗口 
+4. 归档子树
+5. 快速记录片断 
+6. 当前大纲突显，隐藏其它大纲
+7. 当前大纲突显，隐藏其它大纲
+8. 当前大纲突显，隐藏其它大纲
+9. 当前大纲突显，隐藏其它大纲
+10. 当前大纲突显，隐藏其它大纲
+11. 当前大纲突显，隐藏其它大纲
+12. 当前大纲突显，隐藏其它大纲
+13. 取消隐藏其它大纲
+14. 当前大纲突显，隐藏其它大纲
+15. 当前大纲突显，隐藏其它大纲
+16. 当前大纲突显，隐藏其它大纲
+17. 当前大纲突显，隐藏其它大纲
+18. 当前大纲突显，隐藏其它大纲
+19. 当前大纲突显，隐藏其它大纲
+20. 当前大纲突显，隐藏其它大纲
+21. 当前大纲突显，隐藏其它大纲
+22. 当前大纲突显，隐藏其它大纲
+23. 当前大纲突显，隐藏其它大纲
+24. 当前大纲突显，隐藏其它大纲
+25. 当前大纲突显，隐藏其它大纲
+26. 当前大纲突显，隐藏其它大纲
+27. 当前大纲突显，隐藏其它大纲
+28. 当前大纲突显，隐藏其它大纲
 * 待整理好
 ：g 表示替换该
 行所有的符瓦在 dffada 夺：夺合的目标字符串，

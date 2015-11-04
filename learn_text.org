@@ -1,7 +1,7 @@
 * text glossary
  hybrid enabled disabled glossaries, follow me,
- font session 
- text object
+ font sessio
+ text object, purview whole
 fold level fold method  <SPC> : config-system/create-layer RET
 ** .spacemacs.d/
 (defun dotspacemacs/user-config ()
@@ -21,65 +21,72 @@ y 是复制，p 是粘贴
 Y 是复制当前光标到行尾
 r 是一次性的替换当前字符，R 是从当前光标进入替换模式向右，直至 esc
 S 删除本行，且光标到行首进入插入模式
-** cursor current
+** char object
 hjkl,right up down left,prefix
-| key   | prefix | insert | object | effect               | describe                   |
-| i     |        | yes    | char   | left                 |                            |
-| I     |        | yes    | char   | top of line          | first non-blank,visual use |
-| a     |        | yes    | char   | right                |                            |
-| A     |        | yes    | char   | end of line          |                            |
-| s     | yes    | yes    | char   | del current          |                            |
-| S     | yes    | yes    | line   | del done top of line | down count                 |
-| x     | yes    | no     | char   |                      | current right count        |
-| X     | yes    | no     | char   | left                 | current left to one count  |
-| xp    | yes    | no     | char   | yank/pastes          | switch right               |
-| Xp    | yes    | no     | char   | yank/pastes          | switch left  to one count  |
-| ddp   | yes    | no     | line   | yank/pastes          | switch current with down   |
-| D     | no     | no     | line   | current              |                            |
-| cc    | yes    | yes    | line   | current              | cc=S,no prefix             |
-| C     | no     | yes    | line   | current              |                            |
-| w     | yes    | no     | word   | next first           |                            |
-| b     | yes    | no     | word   | last first           |                            |
-| e     | yes    | no     | word   | current word end     |                            |
-| ge    | yes    | no     | word   | current              |                            |
-| dd    | yes    | no     | line   | current              |                            |
-| yy    | yes    | no     | line   |                      |                            |
-| y/dw  | yes    | no     | word   | del current word end | yank                       |
-| y/daw | yes    | no     | word   | del word blank       | yank                       |
-| y/diw | yes    | no     | word   | del word  non-blany  | yank                       |
-| y/de  |        |        | word   |                      |                            |
-| y/db  |        |        |        |                      |                            |
-| y/dge |        |        |        |                      |                            |
-| gg    | no     |        |        |                      |                            |
-| G     | no     |        |        |                      |                            |
-| J     | no     |        |        |                      |                            |
-| gJ    | no     |        |        |                      |                            |
-| 0     | no     | no     | line   |                      |                            |
-| L     | yes    | no     | line   | end of line          |                            |
-| "^    | yes    | no     |        |                      |                            |
-| '$    | yes    | no     |        |                      |                            |
-| o     | no     | yes    |        |                      |                            |
-| O     | no     | yes    |        |                      |                            |
-| r     |        | yes/no | char   | current              | disposable                 |
-| R     |        |        |        |                      |                            |
-| u     |        |        |        |                      | use tree                   |
-| c-r   |        |        |        |                      | use tree                   |
-|       |        |        |        |                      |                            |
-   
-** Symbols
-| <SPC> s l   | To list all the symbols of a buffer press:                    |
-| <SPC> s e   | edit all occurrences of the current symbol                    |
-| <SPC> t s   | taggle the auto highlighting                                  |
-| <SPC> s e   | edit all occurrences of the current symbol                    |
-| <SPC> t s   | taggle the auto highlighting                                  |
-| <SPC> s s   | initiate navigation micro-state                               |
-| <SPC> s n   | go to next occurrence and initiate navigation micro-state     |
-| <SPC> s N   | go to previous occurrence and initiate navigation micro-state |
-| <SPC> s c d | change range to display area                                  |
-| <SPC> s c f | hange range to function                                       |
-| <SPC> s C   | change range to default (whole buffer)                        |
-| <SPC> s c b | change range to whole buffer                                  |
-出现一个列表缓冲区，是以有 * 来提取的，可输入关键字来搜索 ret 后光标就到此处
+ L end of line  
+| key | prefix | insert | object | effect           | describe                  |
+| i   |        | yes    | char   | left             |                           |
+| a   |        | yes    | char   | right            |                           |
+| s   | yes    | yes    | char   | del current      |                           |
+| x   | yes    | no     | char   |                  | current right count       |
+| X   | yes    | no     | char   | left             | current left to one count |
+** word object 
+| key | prefix | insert | object | effect           | describe |
+| w   | yes    | no     | word   | next first       |          |
+| b   | yes    | no     | word   | last first       |          |
+| e   | yes    | no     | word   | current word end |          |
+| ge  | yes    | no     | word   | current          |          |
+** line object 
+| key | prefix | insert | effect                       | describe                   |   |
+| I   |        | yes    | at beginning of current line | first non-blank,visual use |   |
+| A   |        | yes    | end of the current line      |                            |   |
+| dd  | yes    | no     | line                         | current                    |   |
+| cc  | yes    | yes    | current                      | cc=S,no prefix count       |   |
+| S   | yes    | yes    | del current line             | down count                 |   |
+| C   | no     | yes    | line                         | current                    |   |
+| D   | no     | no     | line                         | current                    |   |
+| "^  | yes    | no     |                              |                            |   |
+| 0   | no     | no     | line                         |                            |   |
+| '$  | yes    | no     |                              |                            |   |
+| J   | no     |        |                              |                            |   |
+| gJ  | no     |        |                              |                            |   |
+| o   | no     | yes    |                              |                            |   |
+| O   | no     | yes    |                              |                            |   |
+** edit command 
+| key | prefix | insert | object | effect           | describe                  |
+| r   |        | yes/no | char   | current          | disposable                |
+| R   |        |        |        |                  |                           |
+| u   |        |        |        | uodo             |                           |
+| c-r |        |        |        | redo             |                           |
+** yank and pastes 
+| key   | prefix | insert | object | effect               | describe                  |
+| xp    | yes    | no     | char   | yank/pastes          | switch right              |
+| Xp    | yes    | no     | char   | yank/pastes          | switch left  to one count |
+| ddp   | yes    | no     | line   | yank/pastes          | switch current with down  |
+| yy    | yes    | no     | line   |                      |                           |
+| y/dw  | yes    | no     | word   | del current word end | yank                      |
+| y/daw | yes    | no     | word   | del word blank       | yank                      |
+| y/diw | yes    | no     | word   | del word  non-blany  | yank                      |
+| y/de  |        |        | word   |                      |                           |
+| y/db  |        |        |        |                      |                           |
+| y/dge |        |        |        |                      |                           |
+
+** Scroll big range move
+1) gg 到缓冲区第一行，可加数字前缀到具体行数行首
+2) G  到缓冲区最后一个空行的行首，当然最后一行有空格，说到最后一个字符比较准确
+3) 光标移动，屏幕不动
+     M 当前行到前屏幕的中间
+     H 参数默认为 6，距离屏幕顶的行数，小于 6 不行，要大于 6 才行
+     L 参数默认为 6，距离屏幕底的行数，小于 6 不行，要大于 6 才行枯
+4) 当前光标与当前行一齐移动
+     zt 当前行移动屏幕顶端
+     zz 当前行到当前屏幕的中间，也可说是当前行在屏幕中居中
+     zb 当前行移动到屏幕底端
+5) 光标不动，屏幕移动
+     c-f 向下翻一页，光标不动
+     c-b 向上翻一页，光标不动
+     c-d 向下翻半页，光标不动
+     c-u 向上翻半页，光标不动
 
 ** window
 spc-tab 与最近一个缓冲区来回切换
@@ -100,21 +107,6 @@ spc-tab 与最近一个缓冲区来回切换
 | <SPC> w u   | 	undo window layout (used to effectively undo a close window)         |
 | <SPC> w U   | 	redo window layout                                                   |
 | <SPC> w w   | 	cycle and focus between windows                                      |
-
-** Scroll
-1. 光标移动，屏幕不动
-     M 当前行到前屏幕的中间
-     H 参数默认为 6，距离屏幕顶的行数，小于 6 不行，要大于 6 才行
-     L 参数默认为 6，距离屏幕底的行数，小于 6 不行，要大于 6 才行枯
-2. 当前光标与当前行一齐移动
-     zt 当前行移动屏幕顶端
-     zz 当前行到当前屏幕的中间，也可说是当前行在屏幕中居中
-     zb 当前行移动到屏幕底端
-3. 光标不动，屏幕移动
-     c-f 向下翻一页，光标不动
-     c-b 向上翻一页，光标不动
-     c-d 向下翻半页，光标不动
-     c-u 向上翻半页，光标不动
 ** Files
 manipulation commands (start with f):
 | <SPC> f f   | open a file using ido                             |
@@ -414,8 +406,25 @@ vim 还强大的，倒是没几个。
 
 5. prefer-coding-system
    提升当前的代码顺序
+** Symbols
+| <SPC> s l   | To list all the symbols of a buffer press:                    |
+| <SPC> s e   | edit all occurrences of the current symbol                    |
+| <SPC> t s   | taggle the auto highlighting                                  |
+| <SPC> s e   | edit all occurrences of the current symbol                    |
+| <SPC> t s   | taggle the auto highlighting                                  |
+| <SPC> s s   | initiate navigation micro-state                               |
+| <SPC> s n   | go to next occurrence and initiate navigation micro-state     |
+| <SPC> s N   | go to previous occurrence and initiate navigation micro-state |
+| <SPC> s c d | change range to display area                                  |
+| <SPC> s c f | hange range to function                                       |
+| <SPC> s C   | change range to default (whole buffer)                        |
+| <SPC> s c b | change range to whole buffer                                  |
+出现一个列表缓冲区，是以有 * 来提取的，可输入关键字来搜索 ret 后光标就到此处
 ** plugs 
+*** undo-tree-vap 
+spc a u c-x u
 *** bookmarks
+**** 
 spc h b
 | CTRL+d | delete the selected bookmark                 |
 | CTRL+e | edit the selected bookmark                   |
@@ -426,48 +435,104 @@ To save a new bookmark, just type the name of the bookmark and press RET.
 *** neotree
 可用翻页命令 c-d and c-u
 * org
-spc m org-edit-special
+** temp note
+spc m or leader key "," 
 T 怎么大写 T 直接 TODO
-leader key "," 
 c-c c-d 输入日期
 a-ret 下行出行同级列表或大纲
 s-右箭头会切换列表显示的不同列表号
 SPC s l	spacemacs/jump-in-buffer (jump to a heading)
 org with evil-org-mode 
 c-j 含当前光标分断成新行行
-** org-edit-special
+** org-edit-special Tree related shorcuts
 <dotspacemacs-major-mode-leader-key>
-| leader | 	org-ctrl-c-ctrl-c           | tags     | outline same?                |
-| :      | 	org-set-tags                | tags     | outline same?                |
-| A      | 	org-archive-subtree         | archive  |                              |
-| a      | 	org-agenda                  | agenda   |                              |
-| .      | 	org-time-stamp              |          |                              |
-| b      | 	org-tree-to-indirect-buffer | indirect |                              |
-| c      | 	org-capture                 | capture  |                              |
-| C      | 	evil-org-recompute-clocks   |          |                              |
-| d      | 	org-deadline                | deadline |                              |
-| e      | 	org-export-dispatch         |          |                              |
-| f      | 	org-set-effort              | ?        |                              |
-| I      | 	org-clock-in                |          |                              |
-| l      | 	org-open-at-point           |          |                              |
-| n      | 	org-narrow-to-subtree       | narrow   |                              |
-| N      | 	widen                       | widen    |                              |
-| O      | 	org-clock-out               |          |                              |
-| q      | 	org-clock-cancel            |          |                              |
-| R      | 	org-refile                  |          |                              |
-| s      | 	org-schedule                | schedule |                              |
-| T      | 	org-show-todo-tree          |          |                              |
-| L      | 	org-shiftright              | TODO     | outline                      |
-| H      | 	org-shiftleft               | CLOSED   | outline                      |
-| K      | 	org-shiftup                 | #A       | outline                      |
-| J      | 	org-shiftdown               | #B       | outline                      |
-| C-S-l  | 	org-shiftcontrolright       |          |                              |
-| C-S-h  | 	org-shiftcontrolleft        |          |                              |
-| C-S-j  | 	org-shiftcontroldown        |          | Switch to previous TODO set. |
-| C-S-k  | 	org-shiftcontrolup          |          |                              |
-
+| TAB         | org-cycle               |                                |
+| '$          | org-end-of-line         |                                |
+| '^          | org-beginning-of-line   |                                |
+| H           | org-beginning-of-line   | current line beginning         |
+| L           | org-end-of-line         | current end of line            |
+| o           | always-insert-item      |                                |
+| O           | org-open-above          |                                |
+| spc m e     | 	org-export-dispatch   | export current file option     |
+| spc m R     | 	org-refile            | move subtree to other subtree  |
+| spc m c     | 	org-capture           | capture                        |
+|-------------+-------------------------+--------------------------------|
+| spc m l     | 	org-open-at-point     |                                |
+| spc m f     | 	org-set-effort        | ?:PROPERTIES:                  |
+| spc m C-S-l | 	org-shiftcontrolright |                                |
+| spc m C-S-h | 	org-shiftcontrolleft  |                                |
+| spc m C-S-j | 	org-shiftcontroldown  | ??Switch to previous TODO set. |
+| spc m C-S-k | 	org-shiftcontrolup    |                                |
+*** 当前 outline 产生一个新的，但是在此级下的所有内容后产生
+** Project time management
+| spc m A | 	org-archive-subtree       | archive              |
+| spc m a | 	org-agenda                | agenda               |
+| spc m . | 	org-time-stamp            |                      |
+| spc m C | 	evil-org-recompute-clocks |                      |
+| spc m d | 	org-deadline              | deadline             |
+| spc m I | 	org-clock-in              |                      |
+| spc m O | 	org-clock-out             |                      |
+| spc m q | 	org-clock-cancel          |                      |
+| spc m s | 	org-schedule              | schedule             |
+| spc m H | 	org-shiftleft             | CLOSED               |
+| spc m K | 	org-shiftup               | #A increase priority |
+| spc m J | 	org-shiftdown             | #B increase priority |
+| spc m p |                             | starts a pomodoro    |
+** outline browse
+| spc m b | 	org-tree-to-indirect-buffer | indirect |
+| spc m n | 	org-narrow-to-subtree       | narrow   |
+| spc m N | 	widen                       | widen    |
+** outline meta 
+三类都还没看出区别
+| M-l       | org-metaright         |
+| M-h       | org-metaleft          |
+| M-k       | org-metaup            |
+| M-j       | org-metadown          |
+|-----------+-----------------------|
+| M-L       | org-shiftmetaright    |
+| M-H       | org-shiftmetaleft     |
+| M-K       | org-shiftmetaup       |
+| M-J       | org-shiftmetadown     |
+|-----------+-----------------------|
+| <         | org-metaleft          |
+| >         | org-metaright         |
+|-----------+-----------------------|
+| SPC m S l | org-demote-subtree    |
+| SPC m S h | org-promote-subtree   |
+| SPC m S k | org-move-subtree-up   |
+| SPC m S j | org-move-subtree-down |
+** outline new 
+| key   | function                           | location    | describe                         |
+|-------+------------------------------------+-------------+----------------------------------|
+| c-ret | org-insert-heading-respect-content | top of line | up new Same level                |
+|       |                                    | besides     | down new Same level              |
+| a-ret | org-meta-return                    | top of line | current line up new same level   |
+|       |                                    | line feed   | current line down new same level |
+|       |                                    |             |                                  |
+| M-o   | org-insert-heading + org-metaright | line        | new line insert or use TAB       |
+|       |                                    |             |                                  |
+** outline move
+| gh        | outline-up-heading                            |               |
+| gj        | org-forward-heading-same-level                |               |
+| gk        | org-backward-heading-same-level               |               |
+| gl        | outline-next-visible-heading                  |               |
+** todo 
+| spc m T | org-show-todo-tree                          |               |
+| spc m L | org-shiftright                              |               |
+| M-t     | org-insert-todo-heading nil + org-metaright | down new TODO |
+| T       | org-insert-todo-heading nil                 | new todo line |
+| t       | org-todo                                    |               |
+*** Org-repo-todo
+Key Binding	Description
+SPC C c	org-capture
+SPC C t	ort/capture-todo
+SPC C T	ort/capture-checkitem
+SPC m g t	ort/goto-todos
+** tags Tagging
+| spc m leader | 	org-ctrl-c-ctrl-c | tags | outline same? |
+| spc m :      | 	org-set-tags      | tags | outline same? |
 ** Table-related shortcuts:
-SPC m t or leader t
+SPC m  or leader t 
 | a   |                         | Align the table at point by aligning all vertical bars                     |
 | b   |                         | Blank the current table field or active region                             |
 | c   |                         | Convert from 'org-mode' table to table.el and back                         |
@@ -495,37 +560,7 @@ SPC m t or leader t
 | t o | Toggle numbers          | Toggle the display of Row/Column numbers in tables                         |
 | w   |                         | Wrap several fields in a column like a paragraph                           |
 | I   | Import file             | Import a file as a table                                                   |
-** Tree related shorcuts
-| SPC m S l | 	org-demote-subtree                          |               |
-| SPC m S h | 	org-promote-subtree                         |               |
-| SPC m S k | 	org-move-subtree-up                         |               |
-| SPC m S j | org-move-subtree-down                         |               |
-|-----------+-----------------------------------------------+---------------|
-| TAB       | org-cycle                                     |               |
-| '$        | org-end-of-line                               |               |
-| '^        | org-beginning-of-line                         |               |
-| <         | org-metaleft                                  |               |
-| >         | org-metaright                                 |               |
-| gh        | outline-up-heading                            |               |
-| gj        | org-forward-heading-same-level                |               |
-| gk        | org-backward-heading-same-level               |               |
-| gl        | outline-next-visible-heading                  |               |
-| t         | org-todo                                      |               |
-| T         | org-insert-todo-heading nil                   | new todo line |
-| H         | org-beginning-of-line                         | beginning     |
-| L         | org-end-of-line                               | end of line   |
-| o         | always-insert-item                            |               |
-| O         | org-open-above                                |               |
-| M-l       | 	org-metaright                               |               |
-| M-h       | 	org-metaleft                                |               |
-| M-k       | 	org-metaup                                  |               |
-| M-j       | 	org-metadown                                |               |
-| M-L       | 	org-shiftmetaright                          |               |
-| M-H       | 	org-shiftmetaleft                           |               |
-| M-K       | 	org-shiftmetaup                             |               |
-| M-J       | 	org-shiftmetadown                           |               |
-| M-o       | 	org-insert-heading + org-metaright          |               |
-| M-t       | 	org-insert-todo-heading nil + org-metaright |               |
+
 ** Element insertion
 SPC m h i	org-insert-heading-after-current
 SPC m h I	org-insert-heading
@@ -540,29 +575,18 @@ SPC m i l	org-insert-link
 | SPC m x s | 	make region strike-through |
 | SPC m x u | 	make region underline      |
 | SPC m x v | 	make region verbose        |
-** Tagging
-SPC m :	org-set-tags
-** Pomodoro
-好像模式行在计时
-Key Binding	Description
-SPC m p	starts a pomodoro
 ** Presentation
 org-present must be activated explicitly by typing: SPC : org-present
 Key Binding	Description
 h	previous slide
 l	next slide
 q	quit
-** Org-repo-todo
-Key Binding	Description
-SPC C c	org-capture
-SPC C t	ort/capture-todo
-SPC C T	ort/capture-checkitem
-SPC m g t	ort/goto-todos
 ** Org-MIME
 Key Binding	Description
 SPC m M	in message-mode buffersm convert into html email
 SPC m m	send current buffer as HTML email message
-** 待整理好
-：g 表示替换该
-行所有的符瓦在 dffada 夺：夺合的目标字符串，
- 
+* readme.md
+** temp word
+Documentation
+** INTRODUCTION 
+** Features

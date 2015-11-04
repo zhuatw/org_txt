@@ -420,11 +420,17 @@ vim 还强大的，倒是没几个。
 | <SPC> s C   | change range to default (whole buffer)                        |
 | <SPC> s c b | change range to whole buffer                                  |
 出现一个列表缓冲区，是以有 * 来提取的，可输入关键字来搜索 ret 后光标就到此处
-** plugs 
+* plugs 
+*** magit 
+To open a status buffer, type in a buffer of a Git repository:
+<SPC> g s
+- s = add
+- C = commit
+- c-c c-c
+- P P
 *** undo-tree-vap 
 spc a u c-x u
 *** bookmarks
-**** 
 spc h b
 | CTRL+d | delete the selected bookmark                 |
 | CTRL+e | edit the selected bookmark                   |

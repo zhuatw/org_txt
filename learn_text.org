@@ -1,30 +1,6 @@
 * text glossary
- hybrid enabled disabled glossaries, follow me,
- font sessio
- text object, purview whole
-fold level fold method  <SPC> : config-system/create-layer RET
-** .spacemacs.d/
-(defun dotspacemacs/user-config ()
-  (server-start);;自已的配置放到这里 bb
-)
-** vim mode notes
-*** vim mode
-+ Normal
-+ Insert
-+ last line mode
-*** notes 
-都是前缀，还需要下个命令字符
-d 单独 d 是删除当前行与上一行，前提还要是的再按下移动类的下个命令
-d 作用完还在此模式，c 作用完进入插入模式
-D 直接删除到行尾，C 是直接删除到行尾并进入插入模式   
-y 是复制，p 是粘贴
-Y 是复制当前光标到行尾
-r 是一次性的替换当前字符，R 是从当前光标进入替换模式向右，直至 esc
-S 删除本行，且光标到行首进入插入模式
 ** char object
-hjkl,right up down left,prefix
- L end of line  
-| key | prefix | insert | object | effect           | describe                  |
+| key | prefix | insert | object | effect           | describe |
 | i   |        | yes    | char   | left             |                           |
 | a   |        | yes    | char   | right            |                           |
 | s   | yes    | yes    | char   | del current      |                           |
@@ -52,7 +28,7 @@ hjkl,right up down left,prefix
 | gJ  | no     |        |                              |                            |   |
 | o   | no     | yes    |                              |                            |   |
 | O   | no     | yes    |                              |                            |   |
-** edit command 
+** other edit command 
 | key | prefix | insert | object | effect           | describe                  |
 | r   |        | yes/no | char   | current          | disposable                |
 | R   |        |        |        |                  |                           |
@@ -108,6 +84,10 @@ spc-tab 与最近一个缓冲区来回切换
 | <SPC> w U   | 	redo window layout                                                   |
 | <SPC> w w   | 	cycle and focus between windows                                      |
 ** Files
+输入字母会自动筛选,不管字母的位置
+输入字母后加一个 space，会匹配为首字母
+TAB 是补全到第一个
+jk 为上下移动选择，第一个是默认选择的
 manipulation commands (start with f):
 | <SPC> f f   | open a file using ido                             |
 | <SPC> f e d | open your .spasemacs file                         |
@@ -129,6 +109,11 @@ manipulation commands (start with b):
 | <SPC> b r   | rename the current buffer                                              |
 | <SPC> b s   | switch to a buffer using helm                                          |
 | <SPC> b w   | taggle read-only                                                       |
+** help
+| <SPC> h d f | describe-function |
+| <SPC> h d k | describe-key      |
+| <SPC> h d m | describe-mode     |
+| <SPC> h d v | describe-variable |
 ** visual
 - v Characterwise visual mode
 - V Linewise visual mode
@@ -166,11 +151,50 @@ s-tab 对齐和向上个单元格
 | 2 | c-r | undo-tree-redo | normal| vim   |
 | 3 | c-_ | undo-tree-undo | normal| emacs |
 | 4 | a-_ | undo-tree-redo | normal| emacs |
-*** help
-| <SPC> h d f | describe-function |
-| <SPC> h d k | describe-key      |
-| <SPC> h d m | describe-mode     |
-| <SPC> h d v | describe-variable |
+** temp notes
+*** 最短无二义前缀
+如果需要输入某个事物的名称，而这个名称是有限个数的可能性中的一种，Emacs 就能在输
+入可能最少个数的字符后判断出想输入的是什么
+忽略一些不用的文件名后缀示例 page518
+ L end of line  
+ key  prefix  insert  object effect   describe 
+hjkl,right up down left,prefix
+ hybrid enabled disabled glossaries, follow me,
+ font sessio
+ text object, purview whole
+fold level fold method  <SPC> : config-system/create-layer RET
+** Symbols
+| <SPC> s l   | To list all the symbols of a buffer press:                    |
+| <SPC> s e   | edit all occurrences of the current symbol                    |
+| <SPC> t s   | taggle the auto highlighting                                  |
+| <SPC> s e   | edit all occurrences of the current symbol                    |
+| <SPC> t s   | taggle the auto highlighting                                  |
+| <SPC> s s   | initiate navigation micro-state                               |
+| <SPC> s n   | go to next occurrence and initiate navigation micro-state     |
+| <SPC> s N   | go to previous occurrence and initiate navigation micro-state |
+| <SPC> s c d | change range to display area                                  |
+| <SPC> s c f | hange range to function                                       |
+| <SPC> s C   | change range to default (whole buffer)                        |
+| <SPC> s c b | change range to whole buffer                                  |
+出现一个列表缓冲区，是以有 * 来提取的，可输入关键字来搜索 ret 后光标就到此处
+** .spacemacs.d/
+(defun dotspacemacs/user-config ()
+  (server-start);;自已的配置放到这里 bb
+)
+** vim mode notes
+*** vim mode
++ Normal
++ Insert
++ last line mode
+*** notes 
+都是前缀，还需要下个命令字符
+d 单独 d 是删除当前行与上一行，前提还要是的再按下移动类的下个命令
+d 作用完还在此模式，c 作用完进入插入模式
+D 直接删除到行尾，C 是直接删除到行尾并进入插入模式   
+y 是复制，p 是粘贴
+Y 是复制当前光标到行尾
+r 是一次性的替换当前字符，R 是从当前光标进入替换模式向右，直至 esc
+S 删除本行，且光标到行首进入插入模式
 *** /
 加一个单词然后在整个文档中搜索这个单词，然后用数字加 n 的组合来定位第几个单词。 
    如果我们想要单纯的只使用该单词比如 xin，那么我们可以用
@@ -406,28 +430,23 @@ vim 还强大的，倒是没几个。
 
 5. prefer-coding-system
    提升当前的代码顺序
-** Symbols
-| <SPC> s l   | To list all the symbols of a buffer press:                    |
-| <SPC> s e   | edit all occurrences of the current symbol                    |
-| <SPC> t s   | taggle the auto highlighting                                  |
-| <SPC> s e   | edit all occurrences of the current symbol                    |
-| <SPC> t s   | taggle the auto highlighting                                  |
-| <SPC> s s   | initiate navigation micro-state                               |
-| <SPC> s n   | go to next occurrence and initiate navigation micro-state     |
-| <SPC> s N   | go to previous occurrence and initiate navigation micro-state |
-| <SPC> s c d | change range to display area                                  |
-| <SPC> s c f | hange range to function                                       |
-| <SPC> s C   | change range to default (whole buffer)                        |
-| <SPC> s c b | change range to whole buffer                                  |
-出现一个列表缓冲区，是以有 * 来提取的，可输入关键字来搜索 ret 后光标就到此处
 * plugs 
 *** magit 
-To open a status buffer, type in a buffer of a Git repository:
-<SPC> g s
+**** quick use
+**** To open a status buffer, type in a buffer of a Git repository:
+<SPC> g s 使用这个命名如果当前 git 管理的文件有修改，它会提示你要保存
+才能判断当前的 status 啊
 - s = add
-- C = commit
+- S 等于要在项目类别的名称上就是所作用于此项目类别下的所有
+- c = commit
 - c-c c-c
 - P P
+**** untracked files 这里只能一个的加了吧
+这里如果出现是表示没有加入 git 管理
+**** unstaged changes S 只对这里的管用
+这个表示受 git 管理但是有更改过了
+**** staged changes
+当你使用 s 后前一个 unstaged 就会去掉 un 变成 staged 表示巳 add 了
 *** undo-tree-vap 
 spc a u c-x u
 *** bookmarks
@@ -591,6 +610,61 @@ q	quit
 Key Binding	Description
 SPC m M	in message-mode buffersm convert into html email
 SPC m m	send current buffer as HTML email message
+* elisp 
+normal and insert 状态下 a-ret e 后会出现 command buffer
+c-x c-e 出现在 minibuffer sexp->symbol expression
+c-j eval-print-last-sexp (lisp-state-eval-sexp-end-of-line)
+->eval
+后等于新出二行，第一行是值，第二行是空行的行首
+* learning Gnu Emacs 
+** 11 chapter
+function-name arguments 
+(forward-word 1)
+emacs -q and emacs -u username
+self-insert-command
+esc x command-name RETURN retur 
+keymap global-map local-map
+ctrl-x-map esc-map esc-prefix
+1. 11-352
+     define-key deymap "keystroke" 'command-name
+2. global-set-key "keystroke" 'command-name
+     define-key ctrl-x-map "l" 'goto-line
+     define-key global-map "\c-xl" 'goto-line
+     global-set-key "\c-xl" 'goto-line
+local-set-key "keystroke" 'command-name
+表 11-1:特殊字符转义表 355
+** temp word 
+percent
+application mode
+scratch
+equal
+** temp command 
+help-command
+backward-char
+kill-word
+goto-line
+quoted-insert 11-357 application mode
+apropos
+describe-function c-h-f
+** config example
+setq 是常用的，当这个不起作用时，有个更高级是 setq-default 379
+setq auto-save-interval 800
+setq left-margin 4
+setq case-fold-search nil
+autoload 'function "filename"
+autoload 'ada-mode "ada"
+(setq auto-mode-alist (cons '(* .a$" . ada-mode) auto-mode-alist))
+** variable
+- 字符串值在双引号里
+- 字符值用 prefix ?
+- 符号值用单引号 never
+** 13 chapter 
+431 defun
+(interactive "prompt-string")
+defun count-word-buffer 434 
+与编辑缓冲区和文本有关的基本函数（表：13-4)page440
+** 正则表达式 page441
+** 主编辑模式实例 
 * readme.md
 ** temp word
 Documentation

@@ -12,6 +12,21 @@
 | b   | yes    | no     | word   | last first       |          |
 | e   | yes    | no     | word   | current word end |          |
 | ge  | yes    | no     | word   | current          |          |
+W	同上，但会忽略一些标点符号。
+e	移至后一个字字尾。
+E	同上，但会忽略一些标点符号。
+b	移至前一个字字首。
+B	同上，但会忽略一些标点符号。
+H	移至屏幕顶第一个非空白字元。
+M	移至屏幕中间第一个非空白字元。
+L	移至屏幕底第一个非空白字元。这和 PageDown，PageUp 不一样，内文内容并未动，只是光标在动而已。
+n|	移至第 n 个字元(栏)处。注意，要用 Shift 键。n 是从头起算的。
+:n	移至第 n 行行首。或 nG。
+)	移至下一个句子（sentence）首。
+(	移至上一个句子（sentence）首。sentence（句子）是以 . ! ? 为区格。
+}	移至下一个段落（paragraph）首。
+{	移至上一个段落（paragraph）首。paragraph（段落）是以空白行为区格。
+%	这是匹配{}，[]，() 用的，例如光标在{ 上只要按%，就会跑到相匹配的} 上。
 ** line object 
 | key | prefix | insert | effect                       | describe                   |   |
 | I   |        | yes    | at beginning of current line | first non-blank,visual use |   |
@@ -29,11 +44,14 @@
 | o   | no     | yes    |                              |                            |   |
 | O   | no     | yes    |                              |                            |   |
 ** other edit command 
-| key | prefix | insert | object | effect           | describe                  |
-| r   |        | yes/no | char   | current          | disposable                |
-| R   |        |        |        |                  |                           |
-| u   |        |        |        | uodo             |                           |
-| c-r |        |        |        | redo             |                           |
+| key       | prefix | insert | object | effect  | describe   |
+| r         |        | yes/no | char   | current | disposable |
+| R         |        |        |        |         |            |
+| u         |        |        |        | uodo    |            |
+| c-r       |        |        |        | redo    |            |
+| spc z     |        |        |        |         |            |
+| spc t E h |        |        |        |         |            |
+6: 窗口和字体的放大缩小
 ** yank and pastes 
 | key   | prefix | insert | object | effect               | describe                  |
 | xp    | yes    | no     | char   | yank/pastes          | switch right              |
@@ -110,10 +128,32 @@ manipulation commands (start with b):
 | <SPC> b s   | switch to a buffer using helm                                          |
 | <SPC> b w   | taggle read-only                                                       |
 ** help
-| <SPC> h d f | describe-function |
-| <SPC> h d k | describe-key      |
-| <SPC> h d m | describe-mode     |
-| <SPC> h d v | describe-variable |
+| SPC h d b | describe-binding     |                                                                      |
+| SPC h d c | describe-char        | Describe position POS (interactively, point) and the char after POS. |
+| SPC h d f | describe-function    | Display the full documentation of FUNCTION (a symbol).               |
+| SPC h d k | describe-key         | Display documentation of the function invoked by KEY.                |
+| SPC h d m | describe-mode        | Display documentation of current major mode and minor modes.         |
+| SPC h d p | describe-package     |                                                                      |
+| SPC h d s | describe-system-info | Check the *Messages* buffer if you need to review it                 |
+| SPC h d t | describe-theme       |                                                                      |
+| SPC h d v | describe-variable    | Display the full documentation of VARIABLE (a symbol).               |
+|           | describe-syntax      |                                                                      |
+|           | view-lossage         | 100 char                                                             |
+|           | where-is             | spacemacs no use                                                     |
+| c-h c     | describe-key-briefly |                                                                      |
+| c-x c-h   |                      |                                                                      |
+14: 已经被 SPC h d b 替代了
+01: 当前缓冲区中有绑定那些按键
+12: 提示的输入的函数的快捷键是什么，现在 helm 中这个已不适用了
+13: 提示你按下快捷键运行的是什么函数
+*** apropos
+- command-apropos c-h a
+输入一个相关术语，如 line，会出现涉及到此术语的相关函数
+- apropos
+这个概念涉及到那些函数与变量
+- super-apropos
+那些函数和变量的文档里提到了这个概念
+*** page510 没看完 
 ** visual
 - v Characterwise visual mode
 - V Linewise visual mode
@@ -431,6 +471,10 @@ vim 还强大的，倒是没几个。
 5. prefer-coding-system
    提升当前的代码顺序
 * plugs 
+*** markdown 
+**** hd-md
+=gh-md-revert-buffers= generate a preview of the markdown content of a buffer.
+=gh-md-render-region= 当前区域输出
 *** magit 
 **** quick use
 **** To open a status buffer, type in a buffer of a Git repository:
@@ -670,3 +714,36 @@ defun count-word-buffer 434
 Documentation
 ** INTRODUCTION 
 ** Features
+.git\
+.dir-locals.el
+learn_text.org
+documentation.org
+README_zhua.html
+QUICK_START.org
+learn_GNU_Emacs_Lisp.org
+learn_elisp.el
+learn_elip_1.el
+learn_c.c
+README_zhua.md
+test4.txt
+test1.txt
+test3.org
+Spacemacs_Advanced_Kit.org
+wb_single.txt
+text23.txt
+test2.txt
+magit.org
+README.md
+vim_study.md
+learn_spacemacs.org
+learn_vim.md
+CapsLock.ahk
+english_verd.org
+english_verd_1.org
+english.orgc:\Program Files\emacs\bin\addpm.exe
+c:\Program Files\emacs\bin\ctags.exe
+c:\Program Files\emacs\bin\ebrowse.exe
+c:\Program Files\emacs\bin\emacs.exe
+c:\Program Files\emacs\bin\emacs-25.0.50.exe
+c:\Program Files\emacs\bin\emacsclient.exe
+c:\Program Files\emacs\bin\emacsclientw.exe

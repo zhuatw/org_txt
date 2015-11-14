@@ -1,8 +1,54 @@
-dfasdfas
-123
-12213
-dfasdf
-asdfasd
-dfasdfas
-asdfasdfkjljklj
-asdfasdfa
+
+this is an h1 header Title setext type
+======================================
+
+This is an H2 setext type
+-------------------------
+
+# This is an H1 outline or subtree atx type #
+标准是首尾都要有 #，好像偷懒首行有就OK
+
+
+## current promote a-h and a-l ##
+>如果你要换行的话,新起一行,输入>空格即可,后面不接文字
+>但> 只能放在行首才有效 
+
+## cursor move
+>文字被些字符包围开始 
+| <normal-state> g h | outline-up-heading           |
+| <normal-state> g j | outline-forward-same-level   |
+| <normal-state> g k | outline-backward-same-level  |
+| <normal-state> g l | outline-next-visible-heading |
+>
+> 如果你要换行的话,新起一行,输入>空格即可,后面不接文字 
+> 
+>>>> 但> 只能放在行首才有效 
+>
+> 但> 只能放在行首才有效 
+
+### this is an H3 ###
+  * list
+  * line
+  * font
+  * praagraph
+  * region
+  * block
+  * image
+  * link
+  * foot
+
+-------------------------------------------------------------------------------
+
+## edit command ##
+>   return shell_exec("echo $input | $markdown_script");
+
+## block  ##
+
+### 单行文本框 ###
+
+    这是一个单行的文本框,只要两个 Tab 再输入文字即可
+
+### 多行文本框 ### 
+    这是一个有多行的文本框   
+    你可以写入代码等,每行文字只要输入两个 Tab 再输入文字即可
+    这里你可以输入一段代码 

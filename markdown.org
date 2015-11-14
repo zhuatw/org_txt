@@ -1,0 +1,85 @@
+* markdowm
+style vim hybrid
+** header title setext type leader "h"
+This is an H1
+===================================
+
+This is an H2 
+-----------------------------------
+
+| , h  ! | markdown-insert-header-setext-1    |
+| , h  @ | markdown-insert-header-setext-2    |
+| , h  H | markdown-insert-header-setext-dwim |
+| , h  h | markdown-insert-header-dwim        |
+
+** outline subtree atx type
+# 这是 H1
+## 这是 H2
+### 最多 H6
+| , h  1 | markdown-insert-header-atx-1 |
+| , h  2 | markdown-insert-header-atx-2 |
+| , h  3 | markdown-insert-header-atx-3 |
+| , h  4 | markdown-insert-header-atx-4 |
+| , h  5 | markdown-insert-header-atx-5 |
+| , h  6 | markdown-insert-header-atx-6 |
+
+*** move
+| <M-l>       | markdown-promote           | 当前级别     |
+| <M-h>       | markdown-demote            | 当前级别     |
+|             |                            |              |
+| <M-S-down>  | markdown-move-subtree-down |              |
+| <M-S-up>    | markdown-move-subtree-up   |              |
+| <M-down>    | markdown-move-down         | 页面位置升   |
+| <M-up>      | markdown-move-up           | 页面位置降   |
+| <M-S-left>  | markdown-promote-subtree   | 含的所有级别 |
+| <M-S-right> | markdown-demote-subtree    | 含的所有级别 |
+*** cursor move
+| <normal-state> g h | outline-up-heading               |   |
+| <normal-state> g j | outline-forward-same-level       |   |
+| <normal-state> g k | outline-backward-same-level      |   |
+| <normal-state> g l | outline-next-visible-heading     |   |
+|--------------------+----------------------------------+---|
+| C-c C-p            | outline-previous-visible-heading |   |
+** list leader "l" 
+| <M-return> | markdown-insert-list-item     | 下一行插入列表行 |
+| C-c C-c n  | markdown-cleanup-list-numbers |                  |
+** line paragraph
+| M-{                | markdown-backward-paragraph         |                  |
+| M-}                | markdown-forward-paragraph          |                  |
+** font 
+| <S-tab>   | markdown-shifttab      |      |
+| spc m x b | markdown-insert-bold   | 粗体 |
+| leadr "x" | markdown-insert-italic | 斜体 |
+** edit command leader "c"
+| C-c C-j   | markdown-jump                  |                |
+| C-c C-s p | markdown-insert-pre            | preformatted   |
+| C-c C-o   | markdown-follow-thing-at-point |                |
+| C-c C-]   | markdown-complete              |                |
+| C-M-i     | ispell-complete-word           | spell 单词检查 |
+| C-c C-c ] | markdown-complete-buffer       |                |
+| C-c C-c c | markdown-check-refs            |                |
+| C-c C-c m | markdown-other-window          |                |
+| C-c C-c o | markdown-open                  |                |
+| C-c C-c p | markdown-preview               |                |
+| C-c C-c e | markdown-export                |                |
+| C-c C-c v | markdown-export-and-preview    |                |
+| C-c C-k   | markdown-kill-thing-at-point   |                |
+| C-c C-c w | markdown-kill-ring-save        | rill 环         |
+** block and code leadr "x" 
+| C-c C-s C-b | markdown-blockquote-region |   |
+| C-c C-s C-p | markdown-pre-region        |   |
+| C-c <       | markdown-exdent-region     |   |
+| C-c >       | markdown-indent-region     |   |
+| C-c C-s b   | markdown-insert-blockquote |   |
+| C-c C-s c   | markdown-insert-code       |   |
+** link foot image tab leadr "i" 
+| C-c TAB I          | markdown-insert-reference-image     |                  |
+| C-c TAB i          | markdown-insert-image               |                  |
+| C-c C-a L          | markdown-insert-reference-link-dwim |                  |
+| C-c C-a f          | markdown-insert-footnote            |                  |
+| C-c C-a l          | markdown-insert-link                |                  |
+| C-c C-a r          | markdown-insert-reference-link-dwim |                  |
+| C-c C-a u          | markdown-insert-uri                 |                  |
+| C-c C-a w          | markdown-insert-wiki-link           |                  |
+| M-n                | markdown-next-link                  |                  |
+| M-p                | markdown-previous-link              |                  |

@@ -1,3 +1,19 @@
+* doc_structure
+#+BEGIN_EXAMPLE
+    [.emacs.d]
+      |__ [doc]
+      | |__ CONTRIBUTE.org     CONTRIBUTE.org
+      | |__ CONVENTIONS.org
+      | |__ DOCUMENTATION.org
+      | |__ FAQ.org        
+      | |__ HOWTOs.org          
+      | |__ LAYERS.org     
+      | |__ QUICK_START.org
+      | |__ VIMUSERS.org
+      |__ CHANGELOG.org
+      |__ CONTRIBUTING.md
+      |__ README.md
+#+END_EXAMPLE
 * States
   Spacemacs has 10 states:
 | State        | Color       | Description                                                                                                |
@@ -13,4 +29,13 @@
 | lisp         | pink        | exclusive to Spacemacs, used to navigate Lisp code and modify it (more info)                               |
 | iedit        | red         | exclusive to Spacemacs, used to navigate between multiple regions of text using iedit (more info)          |
 | iedit-insert | red         | exclusive to Spacemacs, used to replace multiple regions of text using iedit (more info)p                  |
-* windows
+* README.md 
+- Quick Install
+    git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+- Introduction
+- Features
+   SPC f e h
+   mode-line
+   space bar or alt-m
+   SPC b or SPC p
+   packages

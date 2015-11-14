@@ -1,0 +1,3 @@
+leader
+current
+a-i 插入空格或制表符
